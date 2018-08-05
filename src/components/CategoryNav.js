@@ -11,7 +11,7 @@ export default class CategoryNav extends React.Component {
             <View style={[styles.container, this.props.layout]}>          
                 {this.props.data.map((item, index) => (
                     <TouchableOpacity key={index} activeOpacity={1} onPress={() => this._onPressButton(index)}>
-                        <Text style={[styles.item, this.props.active === index && styles.active]}>{item.title}</Text>)
+                        <Text style={[styles.item, this.props.active === index && styles.active]}>{item.title}</Text>
                     </TouchableOpacity>
                 ))}
             </View>

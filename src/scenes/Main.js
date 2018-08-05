@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Platform } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { CategorySlider } from '../components';
 import data from '../../public/data.js'
 
@@ -18,6 +18,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: Platform.OS === 'ios' ? 20 : 0,
+        paddingTop: 20,
     },
 });
