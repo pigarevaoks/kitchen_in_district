@@ -5,8 +5,8 @@ import {
     Image, 
     Dimensions, 
     ScrollView 
-} from 'react-native'
-import { getFirstIndexInCategory, getLastIndexInCategory, getCategotiesCount, getSlidesCount, getFirstImage, getLastImage } from '../utils'
+} from 'react-native';
+import { getFirstIndexInCategory, getLastIndexInCategory, getCategotiesCount, getSlidesCount, getFirstImage, getLastImage } from '../utils';
 import CategoryNav from './CategoryNav';
 
 const deviceWidth = Dimensions.get('window').width
@@ -33,7 +33,7 @@ export default class CategorySlider extends Component {
         ))
     )
 
-    _renderFirstSlide = () => (
+    _renderFirstSlide = data => (
         <ScrollView key={`slider_first`} horizontal>
             <Image
                 key={`image_first`}
@@ -44,7 +44,7 @@ export default class CategorySlider extends Component {
     )      
     
 
-    _renderLastSlide = () => (
+    _renderLastSlide = data => (
         <ScrollView key={`slider_last`} horizontal>
             <Image
                 key={`image_last`}
@@ -89,11 +89,13 @@ export default class CategorySlider extends Component {
     }
 
     render() {
+        const { data } = this.props
+
         return (
             <View style={styles.container}>
                 <CategoryNav 
                     layout={styles.nav}
-                    data={this.props.data} 
+                    data={data} 
                     active={this.state.currentCategoryIndex}
                     changeCategory={this._changeCategory}
                 />
@@ -105,13 +107,13 @@ export default class CategorySlider extends Component {
                     pagingEnabled
                     onMomentumScrollEnd={this._onScroll}
                 >   
-                    {this._renderFirstSlide()}
-                    {this.props.data.map((item, index) => (
+                    {this._renderFirstSlide(data)}
+                    {data.map((item, index) => (
                         <ScrollView key={`slider${index}`} horizontal>
                             {this._renderImages(item)}
                         </ScrollView>
                     ))}
-                    {this._renderLastSlide()}
+                    {this._renderLastSlide(data)}
                 </ScrollView>
             </View>
         )

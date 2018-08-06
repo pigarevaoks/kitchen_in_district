@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { CategorySlider } from '../components';
-import data from '../../public/data.js'
+import { data } from '../../public/data.js';
 
 export default class Main extends React.Component {
     render() {
